@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="payment.css">
+</head>
+<body>
+    <h1>Order Summary</h1>
+    <div id="orderDetails" class="payment-container">
+        <!-- Order details will be inserted here -->
+    </div>
+    
+    <div class="payment-container">
+        <h2>Payment Details</h2>
+        <form id="paymentForm">
+            <div class="form-group">
+                <label for="cardNumber">Card Number</label>
+                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+            </div>
+            <div class="form-group">
+                <label for="expiryDate">Expiry Date</label>
+                <input type="text" id="expiryDate" placeholder="MM/YY" required>
+            </div>
+            <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input type="password" id="cvv" placeholder="123" required>
+            </div>
+            <button type="submit" class="pay-now-button">Pay Now</button>
+        </form>
+    </div>
+
+    <script>
+        // Extract URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const itemName = urlParams.get('itemName');
+        const totalPrice = urlParams.get('totalPrice');
+
+        // Display the order details
+        const orderDetailsDiv = document.getElementById('orderDetails');
+        orderDetailsDiv.innerHTML = `
+            <p><strong>Item:</strong> ${itemName}</p>
+            <p><strong>Total Price:</strong> ₹${totalPrice}</p>
+        `;
+
+        // Handle form submission
+        const paymentForm = document.getElementById('paymentForm');
+        paymentForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from refreshing the page
+
+            const cardNumber = document.getElementById('cardNumber').value;
+            const expiryDate = document.getElementById('expiryDate').value;
+            const cvv = document.getElementById('cvv').value;
+
+            // Simple validation
+            if (cardNumber && expiryDate && cvv) {
+                alert('Payment Successful! Thank you for your order.');
+                // Redirect or clear the form after successful payment
+                paymentForm.reset();
+                window.location.href="delivery.html"
+            } else {
+                alert('Please fill out all payment details.');
+            }
+        });
+    </script>
+</body>
+</html>
