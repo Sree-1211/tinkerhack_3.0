@@ -1,4 +1,4 @@
-# [Project Name] 🎯
+# [Grabgo-food ordering site] 🎯
 
 
 ## Basic Details
@@ -14,7 +14,7 @@
 [mention your project hosted project link here]
 
 ### Project Description
-[a basic food oredering website using html css bootstrap javascript]
+[a basic food ordering website using html css bootstrap javascript]
 
 ### The Problem statement
 [simplifying food ordering facility ]
